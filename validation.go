@@ -24,6 +24,13 @@ func ValidateRangeCondition(min int, max int, val int, msg string, errs []error)
 	return errs
 }
 
+func ValidatePositiveNumber(n int, msg string, errs []error) []error {
+	if n < 0 {
+		errs = append(errs, errors.New(msg))
+	}
+	return errs
+}
+
 func ValidateCondition(fn func() bool, msg string, errs []error) []error {
 	if ok := fn(); !ok {
 		errs = append(errs, errors.New(msg))
